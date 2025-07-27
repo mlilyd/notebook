@@ -5,3 +5,4 @@ rich
 ipywidgets
 itables
 voila
+protobuf
