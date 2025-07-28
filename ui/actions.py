@@ -1,41 +1,8 @@
 from notes.api_config import progressCategory, mediaCategory
-from rich import print as rprint
 from ui.constants import *
-import codecs
-import json
+import tarfile
 
 ### UI Functionalities ###
-def general_next(b, globvar, list, key, next_button, prev_button, display, print_function):
-    globvar['i'] += 1
-    if globvar['i']  >= len(list):
-        next_button.disabled=True
-    else:
-        prev_button.disabled = False
-        try:
-            globvar[key] = list.iloc[globvar['i'] ]
-        except AttributeError:
-            globvar[key] = list[globvar['i']]
-        display.clear_output()
-        with display:
-            print_function(globvar)
-        if globvar['i'] == len(list)-1:
-            next_button.disabled = True
-
-def general_prev(b, globvar, list, key, next_button, prev_button, display, print_function):
-        globvar['i'] -= 1
-        if globvar['i']  <0:
-            prev_button.disabled=True
-        else:
-            next_button.disabled=False
-            try:
-                globvar[key] = list.iloc[globvar['i'] ]
-            except AttributeError:
-                globvar[key] = list[globvar['i']]
-            display.clear_output()
-            with display:
-                print_function(globvar)
-            if globvar['i'] == 0:
-                prev_button.disabled = True
 
 def notes_to_html(entry):
     return f"""<table>
@@ -80,5 +47,12 @@ def api_search_2(api_selection, title, entry_selection, url, output):
     
     return api
 
+def save_to_compressed(filename="backup.notes"):
+    tar = tarfile.open(filename, "w:gz")
+    tar.add("json", arcname="json")
+    tar.close()
 
-   
+def load_from_compressed(filename="backup.notes"):
+    tar = tarfile.open(filename, "r:gz")
+    tar.extractall()
+    tar.close()

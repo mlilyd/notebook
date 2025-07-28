@@ -13,6 +13,16 @@ def notes_input(description="", width="90%", height='100px'):
         style = {'background':'transparent', 'text_color': 'var(--vscode-editor-foreground)'}
     )
 
+class notesInput(widgets.Textarea):
+    def __init__(self, descript="", width="90%", height='100px'):
+        super().__init__(
+        value='',
+        placeholder='Enter new notes',
+        description=descript,
+        layout={'width': width, 'height':height},
+        style = {'background':'transparent', 'text_color': 'var(--vscode-editor-foreground)'}            
+        )
+
 def entry_id():
     return widgets.IntText(
         value=0,
@@ -81,21 +91,6 @@ def general_save_button(notes):
     button.on_click(save)
     return button
 
-
-def general_nav_buttons(globvar, list, key, display, print_function):
-    next_button = widgets.Button( description = 'Next ->', layout = {'width': '45%'})
-    prev_button = widgets.Button( description = '<- Previous', layout = {'width': '45%'}, disabled=True)
-    
-    def next(b):
-        general_next(b, globvar, list, key, next_button, prev_button, display, print_function)
-    def prev(b):
-        general_prev(b, globvar, list, key, next_button, prev_button, display, print_function)
-    
-    next_button.on_click(next)
-    prev_button.on_click(prev)
-
-    return widgets.HBox([prev_button, next_button])
-
 def general_accept_button(process_function, text="Create New Note", width="90%"):
     accept_button = widgets.Button(
         description = text,
@@ -106,4 +101,17 @@ def general_accept_button(process_function, text="Create New Note", width="90%")
     accept_button.on_click(process_function)
     return accept_button
 
+
+class SaveButton(widgets.Button):
+
+    def __init__(self, notes, interndb, tachidb, **kwargs):
+        super().__init__(**kwargs)
+        self.notes = notes
+        self.interndb = interndb
+        self.tachidb = tachidb
+
+    def __on_click(self, b):
+        self.notes.save()
+        self.interndb.save()
+        self.tachidb.save()
 
