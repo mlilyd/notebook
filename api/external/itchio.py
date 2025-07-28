@@ -50,7 +50,7 @@ class itchIO(Scrapper):
         return entry['title']
     
     def to_html(self, entry):
-        res = f'<img width=250px src="{entry['cover-image']}">'
+        res = f'<img height=150px src="{entry['cover-image']}">'
         res += "<table>"
         for key in entry.keys():
             if key == 'cover-image':

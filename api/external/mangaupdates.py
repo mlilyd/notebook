@@ -40,7 +40,7 @@ class MangaUpdates(API):
             related_series += f"<tr><td>{i['relation_type']}</td><td>{i['related_series_name']}</td></tr>"
 
         return f'''<table>
-                <tr> <td><img width=250px src="{entry['image']['url']['original']}"></td><td>{entry["description"]}</td> </tr>
+                <tr> <td><img height=150px src="{entry['image']['url']['original']}"></td><td>{entry["description"]}</td> </tr>
                 <tr> <td>ID: {entry['series_id']}</td> <td>Alternate Titles: {altTitleStr}</td> </tr> 
                 
                 <tr> <td>Author(s)</td> <td>{authors}</td></tr>

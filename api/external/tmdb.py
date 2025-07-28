@@ -3,11 +3,11 @@ import requests
 
 class TMDB(API):
 
-    def __init__(self, type="movie"):
+    def __init__(self, authorization, type="movie"):
         super().__init__("https://api.themoviedb.org/3/", f"tmdb-{type}")
         self.headers = {
             "accept": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNWM3MTFhY2YzMTNhZGZmYjM0YTRiMTc1OTQ4NThjMyIsIm5iZiI6MTc1Mjc2Nzg0Ny44ODIsInN1YiI6IjY4NzkxZDY3NzdhZjg1ODZlZGJiZTJiMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DYnOGN8CVJ3GJbgBfiDfcigLM54TRuowOCTNUJ_9VaA"
+            "Authorization": f"Bearer {authorization}"
         }
         self.type = type
         self.img_url = "https://image.tmdb.org/t/p/w500"
@@ -52,7 +52,7 @@ class TMDB(API):
         return entry['overview']
     
     def to_html(self, entry):
-        res = f"<table><tr><td rowspan='2'><img widtd=250px src='{self.img_url+entry['poster_path']}'></td>"
+        res = f"<table><tr><td rowspan='2'><img height=150px src='{self.img_url+entry['poster_path']}'></td>"
         if 'title' in entry.keys():
             res += f"<td>{entry['title']}</td></tr><tr><td>{entry['overview']}</td></tr>"
         else: 

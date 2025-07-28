@@ -1,4 +1,5 @@
 '''UI Components '''
+from rich import print as rprint
 import ipywidgets as widgets 
 from ui.actions import *
 
