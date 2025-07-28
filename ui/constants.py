@@ -1,4 +1,4 @@
-from api.external import mangaupdates, mangadex
+from api.external import mangaupdates, mangadex, anilist
 from api.external import neodb, ao3, libby, vndb
 from api.external import omdb, openlibrary,tmdb, gutendex
 from api.external import googlebooks, itchio, stdebooks
@@ -9,14 +9,15 @@ from _secret_.key import key
 
 
 SEARCH_API = {
-    "Manga Updates": mangaupdates.MangaUpdates(),
-    "MangaDex": mangadex.MangaDex(),
-    "OMDB": omdb.OMDB(),
-    "Open Library": openlibrary.OpenLibrary(),
-    "Google Books": googlebooks.GoogleBooks(),
-    "TMDB-Movie": tmdb.TMDB(key),
-    "TMDB-TV": tmdb.TMDB(key, type="tv"),
-    "VNDB": vndb.VNDB(),
+    "Manga Updates" : mangaupdates.MangaUpdates(),
+    "AniList"       : anilist.AniList(),
+    "MangaDex"      : mangadex.MangaDex(),
+    "OMDB"          : omdb.OMDB(),
+    "Open Library"  : openlibrary.OpenLibrary(),
+    "Google Books"  : googlebooks.GoogleBooks(),
+    "TMDB-Movie"    : tmdb.TMDB(key),
+    "TMDB-TV"       : tmdb.TMDB(key, type="tv"),
+    "VNDB"          : vndb.VNDB(),
     "Project Gutenberg": gutendex.Gutendex()
     }
 
@@ -37,6 +38,7 @@ URL_API_DESCRIPT = {
 }
 
 API_TYPE = {
+    "AniList": 1,
     "Manga Updates": 1, "MangaDex": 1,
     "OMDB": 3, "Open Library": 0,
     "Google Books": 0, "neoDB": 0,
@@ -49,4 +51,5 @@ NEODB_TYPE = {
     'movie': 3, 'game':4, 'tv': 3
 }
 
-TACHI_API = {'MangaDex': mangadex.MangaDex(), 'Manga Updates':mangaupdates.MangaUpdates()}
+TACHI_API = {'AniList': anilist.AniList(),'Manga Updates':mangaupdates.MangaUpdates(),
+             'MangaDex': mangadex.MangaDex(), }

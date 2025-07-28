@@ -2,7 +2,7 @@ from enum import IntEnum
 from _secret_.key import key
 from api.internal import oldDB,TachiBk, internDB
 from api.external import mangaupdates, mangadex
-from api.external import libby, tmdb, ao3, vndb
+from api.external import libby, tmdb, ao3, vndb, anilist
 from api.external import omdb, neodb, itchio, vndb, gutendex
 from api.external import openlibrary, googlebooks, stdebooks
 
@@ -25,6 +25,7 @@ API_LIST = {
              "internal": internDB(),
              "mangaupdates": mangaupdates.MangaUpdates(),
              "mangadex": mangadex.MangaDex(),
+             "anilist": anilist.AniList(),
              "libby": libby.Libby(),
              "omdb": omdb.OMDB(),
              "openlibrary": openlibrary.OpenLibrary(),
