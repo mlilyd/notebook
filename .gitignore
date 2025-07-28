@@ -6,3 +6,4 @@ api/external/_pycache_*
 json*
 test*
 *.notes
+_secret_*

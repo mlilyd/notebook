@@ -2,8 +2,11 @@ from api.external import mangaupdates, mangadex
 from api.external import neodb, ao3, libby, vndb
 from api.external import omdb, openlibrary,tmdb, gutendex
 from api.external import googlebooks, itchio, stdebooks
-
+from _secret_.key import key
 ### CONSTANTS ###
+
+
+
 
 SEARCH_API = {
     "Manga Updates": mangaupdates.MangaUpdates(),
@@ -11,8 +14,8 @@ SEARCH_API = {
     "OMDB": omdb.OMDB(),
     "Open Library": openlibrary.OpenLibrary(),
     "Google Books": googlebooks.GoogleBooks(),
-    "TMDB-Movie": tmdb.TMDB(),
-    "TMDB-TV": tmdb.TMDB(type="tv"),
+    "TMDB-Movie": tmdb.TMDB(key),
+    "TMDB-TV": tmdb.TMDB(key, type="tv"),
     "VNDB": vndb.VNDB(),
     "Project Gutenberg": gutendex.Gutendex()
     }

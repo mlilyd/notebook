@@ -1,4 +1,5 @@
 from enum import IntEnum
+from _secret_.key import key
 from api.internal import oldDB,TachiBk, internDB
 from api.external import mangaupdates, mangadex
 from api.external import libby, tmdb, ao3, vndb
@@ -18,7 +19,6 @@ class mediaCategory(IntEnum):
     VIDEO = 3
     MULTI = 4
 
-
 API_LIST = {
              "old": oldDB(),
              "tachibk": TachiBk(),
@@ -30,8 +30,8 @@ API_LIST = {
              "openlibrary": openlibrary.OpenLibrary(),
              "googlebooks": googlebooks.GoogleBooks(),
              "neodb": neodb.neoDB(),
-             "tmdb-movie": tmdb.TMDB(),
-             "tmdb-tv": tmdb.TMDB(type="tv"),
+             "tmdb-movie": tmdb.TMDB(key),
+             "tmdb-tv": tmdb.TMDB(key, type="tv"),
              "ao3": ao3.Ao3(),
              "itchio": itchio.itchIO(),
              "vndb": vndb.VNDB(),
