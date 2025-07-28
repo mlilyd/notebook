@@ -131,8 +131,7 @@ def search_API(globvar):
     blurb_html = uic.widgets.HTML(layout={'width': '90%', 'height': '350px'})
     status = uic.widgets.Output()
     
-    type_input = uic.type_input()
-    progress_input = uic.progress_input()
+    dropdowns = uic.dropdowns()
     notes_input = uic.notes_input()
 
     entry_selection = uic.widgets.Select(options = [], layout = {'width': '90%', 'height': '20%'},
@@ -153,7 +152,7 @@ def search_API(globvar):
         api = uic.SEARCH_API[api_toggle.value]
         response = api.searchByTitle(title.value)
         entry_selection.options = list((response))
-        type_input.value = uic.API_TYPE[api_toggle.value]
+        dropdowns.children[1].value = uic.API_TYPE[api_toggle.value]
 
     api_toggle.observe(on_api_toggle_change, names='value')
 
@@ -165,7 +164,7 @@ def search_API(globvar):
         blurb_html.value = api.to_html(selection)
 
         if api_toggle.value == "neoDB":
-            type_input.value = uic.NEODB_TYPE[selection['category']]
+            dropdowns.children[1].value = uic.NEODB_TYPE[selection['category']]
 
     entry_selection.observe(on_selection_change, names='value')
 
@@ -177,9 +176,9 @@ def search_API(globvar):
         entry = {}
         entry['title'] = api.getEntryTitle(selection)
         entry['authors'] = api.getEntryAuthors(selection)
-        entry['type'] = type_input.value
+        entry['type'] = dropdowns.children[1].value
         entry['DB'] = f"{api.name}/{api.getEntryID(selection)}"
-        entry['progress'] = progress_input.value
+        entry['progress'] = dropdowns.children[0].value
         entry['notes'] = notes_input.value
 
         globvar['notes'].append(entry)
@@ -191,7 +190,6 @@ def search_API(globvar):
     
     ### layout ###
     api_box = uic.widgets.VBox([api_toggle, entry_selection, blurb_html], layout = {'width': '100%'})
-    dropdowns = uic.widgets.HBox([progress_input, type_input])
     note_box = uic.widgets.VBox([notes_input, accept_button, status], layout = {'width': '100%'})
     return uic.widgets.VBox([title, api_box, dropdowns, note_box])
 
