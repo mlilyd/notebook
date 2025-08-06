@@ -9,3 +9,9 @@ test*
 *.notes
 _secret_*
 to_do.md
+api/external/__pycache__/itchio.cpython-313.pyc
+api/external/__pycache__/mangadex.cpython-313.pyc
+api/external/__pycache__/mangaupdates.cpython-313.pyc
+api/external/__pycache__/stdebooks.cpython-313.pyc
+api/external/__pycache__/tmdb.cpython-313.pyc
+api/external/__pycache__/vndb.cpython-313.pyc
