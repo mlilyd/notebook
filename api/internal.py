@@ -14,7 +14,7 @@ class oldDB(jsonDB):
         return super().getBlurb(entry, "description")
        
     def to_html(self, entry):
-        res = "<table>"
+        res = "<table class='gridtable'>"
         res += f'<tr> <td><img height=150px src="{entry['cover']}"></td><td>{entry['title']}</td> </tr>'
         for key in entry.keys():
             if key in ['cover', 'title']:
@@ -35,7 +35,7 @@ class TachiBk(jsonDB):
         return super().getBlurb(entry, "description")
 
     def to_html(self, entry):
-        res = "<table>"
+        res = "<table class='gridtable'>"
         res += f'<tr> <td><img height=150px src="{entry['cover']}"></td><td>{entry['title']}</td> </tr>'
         for key in entry.keys():
             if key in ['cover', 'title']:
@@ -67,7 +67,7 @@ class internDB(jsonDB):
         return super().getBlurb(entry, "description")
     
     def to_html(self, entry):
-        res = "<table>"
+        res = "<table class='gridtable'>"
         res += f'<tr> <td><img height=150px src="{entry['image']}"></td><td>{entry['title']}</td> </tr>'
         for key in entry.keys():
             if key in ['image', 'title']:

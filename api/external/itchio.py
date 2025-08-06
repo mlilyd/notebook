@@ -51,7 +51,7 @@ class itchIO(Scrapper):
     
     def to_html(self, entry):
         res = f'<img height=150px src="{entry['cover-image']}">'
-        res += "<table>"
+        res += "<table class='gridtable'>"
         for key in entry.keys():
             if key == 'cover-image':
                 continue

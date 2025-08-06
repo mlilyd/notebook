@@ -56,7 +56,7 @@ class OpenLibrary(API):
     def to_html(self, entry):
         edition = self.getEdition(entry)
         cover = f"https://covers.openlibrary.org/b/olid/{self.getEntryID(entry)}-L.jpg"
-        res = f'<table> <tr> <td><img width="175px" src="{cover}"></td> <td></td></tr> <tr><td>ID: {self.getEntryID(entry)}</td><td></td></tr>'
+        res = f'<table class="gridtable"> <tr> <td><img width="175px" src="{cover}"></td> <td></td></tr> <tr><td>ID: {self.getEntryID(entry)}</td><td></td></tr>'
        
         # show description
 

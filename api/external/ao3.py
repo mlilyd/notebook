@@ -59,7 +59,7 @@ class Ao3(Scrapper):
         return entry['title']
     
     def to_html(self, entry):
-        res = "<table>"
+        res = "<table class='gridtable'>"
         for key in entry.keys():
             res += f"<tr><td>{key}</td><td>{entry[key]}</td></tr>"
         

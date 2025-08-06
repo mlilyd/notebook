@@ -55,7 +55,7 @@ class GoogleBooks(API):
         else:
             cover = ""
 
-        table = f'<table><tr><td><a href="{link}"><img src="{cover}"></a></td><td>{title}</td></tr>'
+        table = f'<table class="gridtable"><tr><td><a href="{link}"><img src="{cover}"></a></td><td>{title}</td></tr>'
 
         for key in info.keys():
             table += f"<tr><td>{key}</td><td>{info[key]}</td></tr>"

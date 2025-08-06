@@ -51,7 +51,7 @@ class neoDB(API):
             return "This isn't a URL supported by NeoDB!"
         
     def to_html(self, entry):
-        res = f'<table> <tr> <td rowspan="2"><img width="175px" src="{entry["cover_image_url"]}"></td> <td>{entry['title']}</td></tr><tr><td>{entry['brief']}</td></tr>'
+        res = f'<table class="gridtable"> <tr> <td rowspan="2"><img width="175px" src="{entry["cover_image_url"]}"></td> <td>{entry['title']}</td></tr><tr><td>{entry['brief']}</td></tr>'
         for key in entry.keys():
             if key in ['cover_image_url',"title", 'brief']:
                 continue

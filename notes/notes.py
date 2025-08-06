@@ -39,7 +39,7 @@ class notesDB(jsonDB):
     def to_html_internal(self, note):
         external_db = note['DB'].split("/")[0]
         note_str = f"""
-                <table> <tr><th>Type</th><th>Progress</th><th>DB</th></tr>
+                <table class='gridtable'> <tr><th>Type</th><th>Progress</th><th>DB</th></tr>
                 <tr>    <td>{mediaCategory(note['type']).name}</td>
                         <td>{progressCategory(note['progress']).name}</td>
                         <td>{external_db.upper()}</td>

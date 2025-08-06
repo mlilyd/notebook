@@ -35,7 +35,7 @@ class OMDB(API):
         return f"{entry['Title']}\n{entry['Plot']}\nYear: {entry['Year']}"
     
     def to_html(self, entry):
-        res = f'<table> <tr> <td rowspan="2"><img width="175px" src="{entry["Poster"]}"></td> <td>{entry['Title']}</td></tr><tr><td>{entry['Plot']}</td></tr>'
+        res = f'<table class="gridtable"> <tr> <td rowspan="2"><img width="175px" src="{entry["Poster"]}"></td> <td>{entry['Title']}</td></tr><tr><td>{entry['Plot']}</td></tr>'
         for key in entry.keys():
             if key in ["Poster", 'Title', "Ratings", "Response"]:
                 continue

@@ -38,7 +38,7 @@ class VNDB(API):
         return f"[bold]{entry['title']}[/bold]\n\n{entry['description']}"
     
     def to_html(self, entry):
-        res = f"<table><tr><td rowspan='2'><img height=150px src='{entry['image']['url']}'></th><th>{entry['title']}</th></tr>><tr><td>{entry['description']}</td></tr>"
+        res = f"<table class='gridtable'><tr><td rowspan='2'><img height=150px src='{entry['image']['url']}'></th><th>{entry['title']}</th></tr>><tr><td>{entry['description']}</td></tr>"
         for key in entry.keys():
             if key in ['image', 'title', 'description']:
                 continue

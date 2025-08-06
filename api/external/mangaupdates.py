@@ -39,7 +39,7 @@ class MangaUpdates(API):
         for i in entry['related_series']:
             related_series += f"<tr><td>{i['relation_type']}</td><td>{i['related_series_name']}</td></tr>"
 
-        return f'''<table>
+        return f'''<table class="gridtable">
                 <tr> <td><img height=150px src="{entry['image']['url']['original']}"></td><td>{entry["description"]}</td> </tr>
                 <tr> <td>ID: {entry['series_id']}</td> <td>Alternate Titles: {altTitleStr}</td> </tr> 
                 
