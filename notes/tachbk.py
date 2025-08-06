@@ -22,6 +22,10 @@ def get_info(raw, sources):
         new_entry['description'] = raw.description
     if hasattr(raw, 'genre'):
         new_entry['genre'] = " ".join(raw.genre)
+    if hasattr(raw, 'notes'):
+        new_entry['notes'] = raw.notes
+    else:
+        new_entry['notes'] = ""
     new_entry['cover'] = raw.thumbnailUrl
     new_entry['url'] = raw.url
     new_entry['source'] = sources[raw.source]

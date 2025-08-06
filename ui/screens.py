@@ -250,6 +250,7 @@ def add_tachi(globvar, tachiDB):
         api = uic.TACHI_API[api_toggle.value]
         response = api.searchByTitle(title)
         entry_selection.options = ['Use tachi entry'] + list((response))
+        notes_input.value = entry_list.value['notes']
         
     def on_api_toggle_change(change):
         api = uic.TACHI_API[api_toggle.value]
@@ -272,7 +273,7 @@ def add_tachi(globvar, tachiDB):
         entry = {}
         entry['title'] = tachi_entry["title"]
         entry['authors'] = ",". join(set(tachi_entry["author"].split(",") + tachi_entry['artist'].split(",")))
-        entry['progress'] = 0
+        entry['progress'] = progress.value
         entry['type'] = 1
         entry['notes'] = notes_input.value
 
