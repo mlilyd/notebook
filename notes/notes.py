@@ -35,13 +35,9 @@ class notesDB(jsonDB):
         self.add_entries(entry)
         self.df = self.df.drop_duplicates()
         self.df = self.df.reset_index(drop=True)
-    
-    def to_html(self, note):
-        external_db = note['DB'].split("/")[0]
-        entry = self.get_external_entry(note)
-        external_db_str = self.API[external_db].to_html(entry)
-        
 
+    def to_html_internal(self, note):
+        external_db = note['DB'].split("/")[0]
         note_str = f"""
                 <table> <tr><th>Type</th><th>Progress</th><th>DB</th></tr>
                 <tr>    <td>{mediaCategory(note['type']).name}</td>
@@ -54,9 +50,20 @@ class notesDB(jsonDB):
         if 'notes' in note.keys():
             note_str += f"<p align=left>{note['notes']}</p>"
 
+        return note_str
+
+    def to_html_external(self, note):
+        external_db = note['DB'].split("/")[0]
+        entry = self.get_external_entry(note)
+        return self.API[external_db].to_html(entry)
+    
+    def to_html(self, note):
+        note_str = self.to_html_internal(note)
+        external_db_str = self.to_html_external(note)
+
         return f"<h1>{note['title']}</h1><table> <tr> <td valign=top>{note_str} </td> <td> {external_db_str} </td></tr></table>"
 
-
+        
     
                 
 
