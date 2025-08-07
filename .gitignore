@@ -9,3 +9,4 @@ test*
 *.notes
 _secret_*
 to_do.md
+temp/*
