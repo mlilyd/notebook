@@ -110,7 +110,7 @@ class AniList(API):
         return entry['title']['english']
     
     def to_html(self, entry):
-        res = f"<table class='gridtable'><tr><td rowspan='2'><img height=150px src='{entry['coverImage']['medium']}'></td> <td>{entry['title']}</td></tr><tr><td>{entry['description']}</td></tr>"
+        res = f"<table><tr><td rowspan='2'><img height=150px src='{entry['coverImage']['medium']}'></td> <td>{entry['title']}</td></tr><tr><td>{entry['description']}</td></tr>"
         for key in entry.keys():
             if key in ['title', 'coverImage', 'description']:
                 continue

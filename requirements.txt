@@ -6,3 +6,4 @@ ipywidgets
 itables
 voila
 protobuf
+flask

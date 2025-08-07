@@ -52,7 +52,7 @@ class TMDB(API):
         return entry['overview']
     
     def to_html(self, entry):
-        res = f"<table class='gridtable'><tr><td rowspan='2'><img height=150px src='{self.img_url+entry['poster_path']}'></td>"
+        res = f"<table><tr><td rowspan='2'><img height=150px src='{self.img_url+entry['poster_path']}'></td>"
         if 'title' in entry.keys():
             res += f"<td>{entry['title']}</td></tr><tr><td>{entry['overview']}</td></tr>"
         else: 

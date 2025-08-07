@@ -246,6 +246,7 @@ def add_tachi(globvar, tachiDB):
  
     def on_list_change(change):
         title = entry_list.value['title']
+        blurb_html.value = ""
         title_html.value = f"<b>Searching for {title}</b>"
         api = uic.TACHI_API[api_toggle.value]
         response = api.searchByTitle(title)
@@ -265,7 +266,7 @@ def add_tachi(globvar, tachiDB):
             selection = api.getByID(selection_id)
             blurb_html.value = api.to_html(selection)
         else:
-            blurb_html.value = ""
+            blurb_html.value = tachiDB.to_html(entry_list.value)
 
     def process(b):
         tachi_entry = entry_list.value

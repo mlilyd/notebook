@@ -50,7 +50,7 @@ class StdEBooks(Scrapper):
         return entry['title']
     
     def to_html(self, entry):
-        res = f"<table class='gridtable'><tr><th><img height=150px src='{entry['cover-image']}'></th><th>{entry['title']}</th></tr>"
+        res = f"<table><tr><th><img height=150px src='{entry['cover-image']}'></th><th>{entry['title']}</th></tr>"
         for key in entry.keys():
             if key in ['cover-image', 'github', 'sources', 'title']:
                 continue

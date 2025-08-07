@@ -56,3 +56,4 @@ def load_from_compressed(filename="backup.notes"):
     tar = tarfile.open(filename, "r:gz")
     tar.extractall()
     tar.close()
+

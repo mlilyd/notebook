@@ -83,7 +83,7 @@ class MangaDex(API):
 
         description = attr['description']['en'] if 'en' in attr['description'].keys() else attr['description']
 
-        res = f"""<table class='gridtable'>
+        res = f"""<table>
                 <tr> <td><img height=150px src="{cover_url}"></td><td>{altTitleStr}</td> </tr>
                 <tr> <td>ID</td> <td>{entry['id']}</td> </tr> 
                 <tr> <td>Author(s)</td> <td>{'</br>'.join(authors)}</td></tr>

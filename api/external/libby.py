@@ -49,7 +49,7 @@ class Libby(Scrapper):
         return entry['authors']
     
     def to_html(self, entry):
-        res = "<table class='gridtable'>"
+        res = "<table>"
         for key in entry.keys():
             res += f"<tr><td>{key}</td><td>{entry[key]}</td></tr>"
         
