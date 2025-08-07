@@ -53,7 +53,7 @@ def from_tachibk(backupFile):
 def from_tachibk_upload(upload):
     '''Read uploaded tachi-based backup file
     
-    Return sa list of records
+    Return a list of records
     
     Parameter: ipywidgets.widgets.FileUpload object'''
 
