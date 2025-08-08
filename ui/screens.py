@@ -443,6 +443,10 @@ def add_manual(globvar):
     img_url = uic.widgets.Text(placeholder = "URL to image cover/banner", layout = {'width':'45%'}, style = {'background':'transparent', 'text_color': 'var(--vscode-editor-foreground)'})
     descript_input = uic.widgets.Textarea(placeholder='Description...', layout={'width': '90%', 'height':'150px'},
                                           style = {'background':'transparent', 'text_color': 'var(--vscode-editor-foreground)'})
+    
+    date_published = uic.widgets.DatePicker(description='Published', layout={'width':'45%'})
+    language = uic.widgets.Text(placeholder="Language...", layout={'width':'45%'}, style = {'background':'transparent', 'text_color': 'var(--vscode-editor-foreground)'})
+    
     status = uic.widgets.Output()
 
     ##########################
@@ -462,6 +466,8 @@ def add_manual(globvar):
         entry['title'] = title.value
         entry['authors'] = authors.value
         entry['url'] = url.value
+        entry['published'] = date_published.value.strftime("%Y-%m-%d")
+        entry['language'] = language.value
         entry['image'] = img_url.value
         entry['description'] = descript_input.value
 
@@ -476,7 +482,8 @@ def add_manual(globvar):
 
     accept_button = uic.general_accept_button(process)
     links = uic.widgets.HBox([url, img_url])
-    return uic.widgets.VBox([title, authors, links, dropdowns, descript_input, notes_input, accept_button, status])
+    lang_date = uic.widgets.HBox([date_published, language])
+    return uic.widgets.VBox([title, authors, links, lang_date, dropdowns, descript_input, notes_input, accept_button, status])
 
 def review_new_notes(search, manual, from_url, from_libby, from_tachi, notes, interndb):
     '''Screen for reviewing and adding new notes
